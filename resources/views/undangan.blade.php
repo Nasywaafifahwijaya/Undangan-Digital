@@ -22,21 +22,32 @@
     <!-- ===================== -->
     <!-- COVER / HERO SECTION -->
     <!-- ===================== -->
-    <section id="cover"
-        class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+    <section
+    id="cover"
+    x-data="{ open: false }"
+    :class="open ? 'pointer-events-none' : ''"
+    class="fixed inset-0 z-50 bg-[#fdf6ec] flex items-center justify-center overflow-hidden"
+>
 
         {{-- Tirai kiri --}}
         <img src="/assets/images/tirai-left.png"
-            class="absolute left-0 top-0 h-full w-auto z-10"
-            alt="Tirai kiri">
+        :class="open ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100'"
+        class="absolute left-0 top-0 h-full w-auto z-10 transition-all duration-1000 ease-in-out"
+        alt="Tirai kiri">
 
         {{-- Tirai kanan --}}
         <img src="/assets/images/tirai-right.png"
-            class="absolute right-0 top-0 h-full w-auto z-10"
-            alt="Tirai kanan">
+        :class="open ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'"
+        class="absolute right-0 top-0 h-full w-auto z-10 transition-all duration-1000 ease-in-out"
+        alt="Tirai kanan">
+
+
 
         {{-- Konten tengah --}}
-        <div class="relative z-20 px-6">
+        <div
+        :class="open ? 'opacity-0 scale-95' : 'opacity-100 scale-100'"
+        class="relative z-20 px-6 text-center transition-all duration-700 ease-in-out"
+        >
             <h1 class="text-4xl font-[Playfair_Display] mb-4">
                 Alya & Anas
             </h1>
@@ -121,6 +132,63 @@
         </div>
     </section>
 
+<!-- ===================== -->
+<!-- AKAD NIKAH -->
+<!-- ===================== -->
+<section id="akad" class="py-24 px-6 text-center bg-white/40">
+    <h2 class="text-2xl font-[Playfair_Display] mb-8">
+        Akad Nikah
+    </h2>
+
+    <p class="text-sm mb-2">
+        Jum’at, 27 Maret 2026
+    </p>
+
+    <p class="text-sm mb-6">
+        Pukul 08.00 WIB - Selesai
+    </p>
+
+    <p class="text-sm max-w-md mx-auto mb-6">
+        Masjid <br>
+        Jl. Maharani VI Komplek PDK, Medan Marelan
+    </p>
+
+    <a href="#"
+       class="inline-block px-6 py-3 rounded-full bg-[#e7cbb1] text-sm font-medium shadow">
+        Google Maps
+    </a>
+</section>
+
+
+<!-- ===================== -->
+<!-- RESEPSI -->
+<!-- ===================== -->
+<section id="resepsi" class="py-24 px-6 text-center">
+    <h2 class="text-2xl font-[Playfair_Display] mb-8">
+        Resepsi
+    </h2>
+
+    <p class="text-sm mb-2">
+        Sabtu, 28 Maret 2026
+    </p>
+
+    <p class="text-sm mb-6">
+        Gedung Islamic Center Muhammadiyah
+    </p>
+
+    <p class="text-sm max-w-md mx-auto mb-6">
+        Glugur Darat I, Kec. Medan Timur <br>
+        Kota Medan
+    </p>
+
+    <a href="#"
+       class="inline-block px-6 py-3 rounded-full bg-[#e7cbb1] text-sm font-medium shadow">
+        Google Maps
+    </a>
+</section>
+
+
+    
     <!-- ===================== -->
     <!-- RSVP (STATIC DULU) -->
     <!-- ===================== -->
