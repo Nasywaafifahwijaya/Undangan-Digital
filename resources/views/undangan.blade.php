@@ -23,8 +23,9 @@
     <!-- COVER / HERO SECTION -->
     <!-- ===================== -->
     <section id="cover"
-        class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
-
+        class="relative min-h-screen flex items-center justify-center text-center overflow-hidden
+           bg-cover bg-center bg-no-repeat"
+        style="background-image: url('/assets/images/bg/bg-cover.jpg');">
         {{-- Tirai kiri --}}
         <img src="/assets/images/tirai-left.png"
             class="absolute left-0 top-0 h-full w-auto z-10"
@@ -71,6 +72,7 @@
             pada acara pernikahan kami.
         </p>
     </section>
+
 
     <!-- ===================== -->
     <!-- BRIDE & GROOM -->
@@ -125,7 +127,8 @@
     <!-- RSVP (STATIC DULU) -->
     <!-- ===================== -->
     <section class="py-24 px-6 bg-white/40">
-        <h2 class="text-center text-xl font-[Playfair_Displayified] mb-10">
+        <h2 class="text-center text-xl font-[Playfair_Display] mb-10">
+
             Konfirmasi Kehadiran
         </h2>
 
