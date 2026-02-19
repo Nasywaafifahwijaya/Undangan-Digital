@@ -17,8 +17,7 @@
 <body
     x-data="{ opened: false }"
     :class="opened ? 'overflow-auto' : 'overflow-hidden'"
-    class="m-0 p-0 w-full h-full text-gray-800 font-[Poppins]"
->
+    class="m-0 p-0 w-full h-full text-gray-800 font-[Poppins]">
 
     <div
         class="relative w-full
@@ -27,12 +26,12 @@
          bg-top
          md:bg-cover
          md:bg-center"
-        style="background-image: url('/assets/images/bg/bg-cover.jpg');"
-    >
+        style="background-image: url('/assets/images/bg/bg-cover3.jpg');">
 
         @include('sections.cover')
 
         <div x-show="opened" x-transition.opacity.duration.500ms>
+            @include('sections.detail-card')
             @include('sections.opening')
             @include('sections.bride-groom')
             @include('sections.countdown')
@@ -43,6 +42,63 @@
         </div>
 
     </div>
+
+    <!-- ========================= -->
+    <!-- COUNTDOWN SCRIPT -->
+    <!-- ========================= -->
+    <script>
+        const targetDate = new Date("2026-03-28T10:00:00+07:00").getTime();
+
+
+        function updateCountdown() {
+
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) return;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const d = document.getElementById("cd_days");
+            const h = document.getElementById("cd_hours");
+            const m = document.getElementById("cd_minutes");
+            const s = document.getElementById("cd_seconds");
+
+            if (d) d.innerHTML = days;
+            if (h) h.innerHTML = hours;
+            if (m) m.innerHTML = minutes;
+            if (s) s.innerHTML = seconds;
+
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+
+        function addToCalendar() {
+
+            const title = "Wedding Alya & Anas";
+            const location = "Lokasi Pernikahan";
+            const details = "Undangan Pernikahan Alya & Anas";
+
+            const start = "20260328T020000Z";
+            const end = "20260328T060000Z";
+
+            const url =
+                "https://www.google.com/calendar/render?action=TEMPLATE" +
+                "&text=" + encodeURIComponent(title) +
+                "&dates=" + start + "/" + end +
+                "&details=" + encodeURIComponent(details) +
+                "&location=" + encodeURIComponent(location);
+
+            window.open(url, "_blank");
+
+        }
+    </script>
+
 
 </body>
 
