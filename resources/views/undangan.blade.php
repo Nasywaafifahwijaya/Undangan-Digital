@@ -17,9 +17,8 @@
 <body
     x-data="{ opened: false }"
     :class="opened ? 'overflow-auto' : 'overflow-hidden'"
-    class="m-0 p-0 w-full h-full
-           bg-cover bg-center bg-no-repeat
-           text-gray-800 font-[Poppins]">
+    class="m-0 p-0 w-full h-full text-gray-800 font-[Poppins]"
+>
 
     <div
         class="relative w-full
@@ -28,18 +27,24 @@
          bg-top
          md:bg-cover
          md:bg-center"
-        style="background-image: url('/assets/images/bg/bg-cover.jpg');">
+        style="background-image: url('/assets/images/bg/bg-cover.jpg');"
+    >
 
         @include('sections.cover')
-        @include('sections.opening')
-        @include('sections.bride-groom')
-        @include('sections.countdown')
-        @include('sections.akad')
-        @include('sections.resepsi')
-        @include('sections.rsvp')
-        @include('sections.footer')
+
+        <div x-show="opened" x-transition.opacity.duration.500ms>
+            @include('sections.opening')
+            @include('sections.bride-groom')
+            @include('sections.countdown')
+            @include('sections.akad')
+            @include('sections.resepsi')
+            @include('sections.rsvp')
+            @include('sections.footer')
+        </div>
 
     </div>
+
 </body>
+
 
 </html>

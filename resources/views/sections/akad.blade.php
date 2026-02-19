@@ -1,5 +1,4 @@
-<section
-    section class="py-24 px-6 text-center">
+<section class="py-24 px-6 text-center">
 
     <h2 class="text-2xl font-[Playfair_Display] mb-8">
         Akad Nikah
