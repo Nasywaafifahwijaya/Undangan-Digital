@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="h-full">
 
 <head>
     <meta charset="UTF-8">
@@ -15,30 +15,44 @@
 </head>
 
 <body
-    x-data="{ opened: false }"
+    x-data="{
+        opened: window.location.hash === '#open' || window.location.hash === '#rsvp'
+    }"
     :class="opened ? 'overflow-auto' : 'overflow-hidden'"
-    class="m-0 p-0 w-full h-full text-gray-800 font-[Poppins]">
+    class="min-h-full w-full text-gray-800 font-[Poppins]">
 
     <div
-        class="relative w-full
-         bg-[length:100%_auto]
-         bg-no-repeat
-         bg-top
-         md:bg-cover
-         md:bg-center"
-        style="background-image: url('/assets/images/bg/bg-cover3.jpg');">
+        class="relative w-full min-h-screen bg-no-repeat bg-top"
+        style="
+        background-image: url('/assets/images/bg/bg-cover3.jpg');
+        background-size: cover;
+        background-position: center top;
+">
 
-        @include('sections.cover')
+        <!-- WRAPPER TENGAH -->
+        <div class="max-w-[480px] mx-auto">
 
-        <div x-show="opened" x-transition.opacity.duration.500ms>
-            @include('sections.detail-card')
-            @include('sections.opening')
-            @include('sections.bride-groom')
-            @include('sections.countdown')
-            @include('sections.akad')
-            @include('sections.resepsi')
-            @include('sections.rsvp')
-            @include('sections.footer')
+            @include('sections.cover')
+
+            <div x-show="opened" x-transition.opacity.duration.500ms>
+                @include('sections.detail-card')
+                @include('sections.opening')
+                @include('sections.bride-groom')
+                @include('sections.countdown')
+                @include('sections.akad')
+                @include('sections.resepsi')
+                @include('sections.wedding-gift')
+                @include('sections.rsvp')
+                @include('sections.footer')
+            </div>
+
+        </div>
+        <!-- bunga bawah -->
+        <div class="absolute bottom-0 left-0 w-full pointer-events-none z-10">
+
+            <img src="/assets/images/bg-/bunga-bawah.jpeg"
+                class="w-full">
+
         </div>
 
     </div>
@@ -98,6 +112,18 @@
 
         }
     </script>
+
+    <script>
+        function copyRekening(id) {
+
+            const text = document.getElementById(id).innerText.replace(/\s/g, '');
+            navigator.clipboard.writeText(text);
+
+            alert("Nomor rekening berhasil disalin");
+
+        }
+    </script>
+
 
 
 </body>

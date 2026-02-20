@@ -46,6 +46,7 @@
             @click="
                 open = true;
                 opened = true;
+                window.location.hash = 'open';
                 setTimeout(() => {
                     document.getElementById('opening')
                         ?.scrollIntoView({ behavior: 'smooth' });
