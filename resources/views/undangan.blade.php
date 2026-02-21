@@ -24,7 +24,7 @@
     <div
         class="relative w-full min-h-screen bg-no-repeat bg-top"
         style="
-        background-image: url('/assets/images/bg/bg-cover3.jpg');
+        background-image: url('/assets/images/bg/cover-fix.jpeg');
         background-size: cover;
         background-position: center top;
 ">

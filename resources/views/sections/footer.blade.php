@@ -25,7 +25,7 @@
                 border border-[#c6b89a]
                 overflow-hidden">
 
-                <img src="/assets/images/foto/foto-penutup.jpg"
+                <img src="/assets/images/foto/alyaanas.jpeg"
                     class="w-full h-full object-cover">
 
             </div>

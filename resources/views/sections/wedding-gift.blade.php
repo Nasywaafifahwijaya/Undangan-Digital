@@ -4,42 +4,35 @@
     <div class="relative
 
         w-full
-        max-w-[460px]   <!-- lebih lebar -->
+        max-w-[460px]
 
         rounded-[30px]
 
         px-6 md:px-10
-        py-16
+        py-20              <!-- tambah tinggi -->
 
         text-center
 
-        border border-[#9fbfd6]  <!-- garis pinggir -->
-
+        border border-[#c6b89a]
         shadow-sm"
 
         style="
-            background-color: rgba(197, 220, 236, 0.55);
+            background-color: rgba(243, 237, 227, 0.65);
             backdrop-filter: blur(8px);
         ">
 
 
         <!-- INNER BORDER -->
         <div class="absolute inset-3
-
-            rounded-t-[240px]
-            rounded-b-[26px]
-
-            border border-[#9fbfd6]/70
-
-            pointer-events-none">
+            rounded-t-[240px] 
+            rounded-b-[26px] 
+            
+            border border-[#c6b89a]/70 pointer-events-none">
         </div>
-
-
-
         <div class="relative z-10">
 
 
-            <!-- TITLE (DITENGAH) -->
+            <!-- TITLE -->
             <h2 class="font-[Playfair_Display]
 
                 font-bold
@@ -48,22 +41,22 @@
 
                 text-[#5c3a3a]
 
-                text-center   <!-- ini yang membuat center -->
+                text-center
 
-                mb-5">
+                mb-6">
 
                 Wedding Gift
 
             </h2>
 
 
-
-            <p class="text-[10px]
-    text-[#5c3a3a]/80
-    leading-relaxed
-    max-w-[300px]
-    mx-auto
-    mb-10">
+            <!-- DESKRIPSI -->
+            <p class="text-sm
+                text-[#5c3a3a]/80
+                leading-relaxed
+                max-w-[320px]
+                mx-auto
+                mb-12">
 
                 Doa restu Anda merupakan karunia yang sangat berarti bagi kami.
                 Namun jika Anda ingin memberikan hadiah, kami akan senang hati menerimanya.
@@ -71,216 +64,128 @@
             </p>
 
 
-
-            <!-- CARD BANK -->
+            <!-- CARD MANDIRI -->
             <div class="relative
-    w-full
-    max-w-[340px]
-    h-[140px]
+                w-full
+                max-w-[360px]
+                h-[150px]
 
-    mx-auto mb-5
+                mx-auto mb-6
 
-    rounded-[20px]
-    overflow-hidden
-
-    border border-[#d8cdb8]
-    shadow-sm"
-
-                style="
-        background-image: url('/assets/images/bg/bg-atm.png');
-        background-size: cover;
-        background-position: center;
-    ">
-
-                <!-- overlay -->
-                <div class="absolute inset-0 bg-white/60 backdrop-blur-[2px]"></div>
-
-
-                <!-- LOGO -->
-                <img src="/assets/images/icon/logo-mandiri.svg"
-                    class="absolute top-4 right-4 h-6 z-10">
-
-
-                <!-- CHIP -->
-                <img src="/assets/images/icon/chip-atm.jpg"
-                    class="absolute top-[50px] left-4 w-8 z-10">
-
-
-                <!-- NOMOR -->
-                <div id="rekeningMandiri"
-                    class="absolute bottom-6 left-4 z-10
-
-        text-[11px]
-        tracking-[0.25em]
-        text-[#5c3a3a]
-        font-medium">
-
-                    1234 5678 9012
-
-                </div>
-
-
-                <!-- NAMA -->
-                <div class="absolute bottom-3 left-4 z-10
-
-        text-[10px]
-        text-[#5c3a3a]">
-
-                    Alya Silvina Wijaya
-
-                </div>
-
-
-                <!-- BUTTON -->
-                <button onclick="copyRekening('rekeningMandiri')"
-
-                    class="absolute bottom-4 right-4 z-10
-
-        px-3 py-1
-
-        text-[10px]
-
-        rounded-[8px]
-
-        bg-[#6b4340]
-        text-white
-
-        hover:bg-[#5a3633]
-        transition">
-
-                    Salin
-
-                </button>
-
-            </div>
-
-
-
-            <!-- CARD BANK -->
-            <div class="relative
-    w-full
-    max-w-[340px]
-    h-[140px]
-
-    mx-auto mb-5
-
-    rounded-[20px]
-    overflow-hidden
-
-    border border-[#d8cdb8]
-    shadow-sm"
-
-                style="
-        background-image: url('/assets/images/bg/bg-atm.png');
-        background-size: cover;
-        background-position: center;
-    ">
-
-                <!-- overlay -->
-                <div class="absolute inset-0 bg-white/60 backdrop-blur-[2px]"></div>
-
-
-                <!-- LOGO -->
-                <img src="/assets/images/icon/images.png"
-                    class="absolute top-4 right-4 h-6 z-10">
-
-
-                <!-- CHIP -->
-                <img src="/assets/images/icon/chip-atm.jpg"
-                    class="absolute top-[50px] left-4 w-8 z-10">
-
-
-                <!-- NOMOR -->
-                <div id="rekeningMandiri"
-                    class="absolute bottom-6 left-4 z-10
-
-        text-[11px]
-        tracking-[0.25em]
-        text-[#5c3a3a]
-        font-medium">
-
-                    1234 5678 9012
-
-                </div>
-
-
-                <!-- NAMA -->
-                <div class="absolute bottom-3 left-4 z-10
-
-        text-[10px]
-        text-[#5c3a3a]">
-
-                    Alya Silvina Wijaya
-
-                </div>
-
-
-                <!-- BUTTON -->
-                <button onclick="copyRekening('rekeningMandiri')"
-
-                    class="absolute bottom-4 right-4 z-10
-
-        px-3 py-1
-
-        text-[10px]
-
-        rounded-[8px]
-
-        bg-[#6b4340]
-        text-white
-
-        hover:bg-[#5a3633]
-        transition">
-
-                    Salin
-
-                </button>
-
-            </div>
-
-
-
-            <!-- BOX HADIAH FISIK -->
-            <div class="relative
                 rounded-[20px]
+                overflow-hidden
 
-                border border-[#c6b89a]
+                border border-[#d8cdb8]
+                shadow-sm"
 
-                px-6 py-6
+                style="
+                background-image: url('/assets/images/bg/bg-atm.png');
+                background-size: cover;
+                background-position: center;
+            ">
 
-                text-center">
+                <div class="absolute inset-0 bg-white/60 backdrop-blur-[2px]"></div>
 
+                <img src="/assets/images/icon/mandiri.png"
+                    class="absolute top-4 right-4 h-8 z-10">
 
-                <!-- ICON -->
-                <div class="flex justify-center mb-4">
+                <img src="/assets/images/icon/chip-atm.jpg"
+                    class="absolute top-[55px] left-5 w-9 z-10">
 
-                    <img src="/assets/images/icon/gift.svg"
-                        class="w-10 opacity-70">
+                <div id="rekeningMandiri"
+                    class="absolute bottom-7 left-5 z-10
+                    text-[12px]
+                    tracking-[0.25em]
+                    text-[#5c3a3a]
+                    font-medium">
 
-                </div>
-
-
-
-                <!-- TEXT -->
-                <div class="text-[#5c3a3a]">
-
-                    <div class="font-semibold mb-1">
-                        Kirim Hadiah Fisik
-                    </div>
-
-                    <div class="text-sm">
-                        Alya Silvina Wijaya (08xxxxx)
-                    </div>
-
-                    <div class="text-sm">
-                        (alamat)
-                    </div>
+                    1060017244321
 
                 </div>
 
+                <div class="absolute bottom-4 left-5 z-10
+                    text-[11px]
+                    text-[#5c3a3a]">
+
+                    Alya Silvina Wijaya
+
+                </div>
+
+                <button onclick="copyRekening('rekeningMandiri')"
+                    class="absolute bottom-5 right-5 z-10
+                    px-3 py-1
+                    text-[11px]
+                    rounded-[8px]
+                    bg-[#6b4340]
+                    text-white">
+
+                    Salin
+
+                </button>
 
             </div>
 
+
+            <!-- CARD BCA -->
+            <div class="relative
+                w-full
+                max-w-[360px]
+                h-[150px]
+
+                mx-auto
+
+                rounded-[20px]
+                overflow-hidden
+
+                border border-[#d8cdb8]
+                shadow-sm"
+
+                style="
+                background-image: url('/assets/images/bg/bg-atm.png');
+                background-size: cover;
+                background-position: center;
+            ">
+
+                <div class="absolute inset-0 bg-white/60 backdrop-blur-[2px]"></div>
+
+                <img src="/assets/images/icon/bca.png"
+                    class="absolute top-4 right-4 h-8 z-10">
+
+                <img src="/assets/images/icon/chip-atm.jpg"
+                    class="absolute top-[55px] left-5 w-9 z-10">
+
+                <div id="rekeningBca"
+                    class="absolute bottom-7 left-5 z-10
+                    text-[12px]
+                    tracking-[0.25em]
+                    text-[#5c3a3a]
+                    font-medium">
+
+                    2421182398
+
+                </div>
+
+                <div class="absolute bottom-4 left-5 z-10
+                    text-[11px]
+                    text-[#5c3a3a]">
+
+                    Anas Dary Arinto
+
+                </div>
+
+                <button onclick="copyRekening('rekeningBca')"
+                    class="absolute bottom-5 right-5 z-10
+                    px-3 py-1
+                    text-[11px]
+                    rounded-[8px]
+                    bg-[#6b4340]
+                    text-white">
+
+                    Salin
+
+                </button>
+
+            </div>
 
 
         </div>

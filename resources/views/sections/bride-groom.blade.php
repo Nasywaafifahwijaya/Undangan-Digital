@@ -71,7 +71,7 @@
                     overflow-hidden">
 
                     <!-- GANTI src nanti dengan foto asli -->
-                    <img src="/assets/images/bride.jpg"
+                    <img src="/assets/images/foto/alya.jpeg"
                         class="w-full h-full object-cover">
 
                 </div>
@@ -145,7 +145,7 @@
                     border-2 border-[#c6b89a]
                     overflow-hidden">
 
-                    <img src="/assets/images/groom.jpg"
+                    <img src="/assets/images/foto/anas.jpeg"
                         class="w-full h-full object-cover">
 
                 </div>
@@ -187,7 +187,7 @@
                 text-[#8b7a55]/80
                 leading-relaxed">
 
-                <div>Bapak Suharwanto</div>
+                <div>Bapak Suharwanto, S.E</div>
 
                 <div class="my-1">&</div>
 
