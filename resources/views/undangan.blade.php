@@ -50,7 +50,7 @@
             <div class="fixed bottom-0 left-0 w-full pointer-events-none z-50 flex justify-center">
 
                 <img src="/assets/images/bg/bunga-bawah.png"
-                    class="w-full max-w-[480px]">
+                    class="w-full max-w-[480px] bunga-animasi">
 
             </div>
 
@@ -123,7 +123,39 @@
             }
         </script>
 
+        <style>
+            @keyframes bungaAngin {
 
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                25% {
+                    transform: rotate(-0.5deg);
+                }
+
+                50% {
+                    transform: rotate(0.5deg);
+                }
+
+                75% {
+                    transform: rotate(-0.3deg);
+                }
+
+                100% {
+                    transform: rotate(0deg);
+                }
+
+            }
+
+            .bunga-animasi {
+
+                animation: bungaAngin 8s ease-in-out infinite;
+
+                transform-origin: bottom center;
+
+            }
+        </style>
 
 </body>
 

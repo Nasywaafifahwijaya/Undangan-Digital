@@ -1,7 +1,29 @@
-<section id="footer"
-    class="flex justify-center px-6 py-24 text-center">
+<section id="footer" class="relative w-full px-4 py-24 flex justify-center">
 
-    <div class="w-full max-w-[420px] relative">
+    <!-- FRAME FULL LAYAR -->
+    <div class="
+    absolute inset-0
+    rounded-none
+    border border-[#c6b89a]
+"
+        style="
+    background-color: rgba(243,237,227,0.50);
+    backdrop-filter: blur(8px);
+">
+    </div>
+
+
+    <!-- INNER FRAME -->
+    <div class="
+    absolute inset-4
+    border border-[#c6b89a]/70
+    pointer-events-none
+">
+    </div>
+
+
+    <!-- CONTENT TETAP CENTER -->
+    <div class="relative z-10 w-full max-w-[420px] text-center">
 
 
         <!-- TITLE -->
@@ -73,14 +95,38 @@
 
 
 
-        <!-- LOGO AA -->
+        <!-- LOGO AA TEXT MONOGRAM -->
         <div class="flex justify-center">
 
-            <img src="/assets/images/icon/logo-aa.svg"
-                class="w-12 opacity-80">
+            <div class="relative w-[50px] h-[60px]">
+
+                <!-- A atas -->
+                <div class="
+            absolute left-0 top-0
+            font-[Playfair_Display]
+            text-[40px]
+            text-[#7a4b2f]
+            font-semibold
+            leading-none
+        ">
+                    A
+                </div>
+
+                <!-- A bawah (geser kanan & turun) -->
+                <div class="
+            absolute left-[16px] top-[22px]
+            font-[Playfair_Display]
+            text-[40px]
+            text-[#7a4b2f]
+            font-semibold
+            leading-none
+        ">
+                    A
+                </div>
+
+            </div>
 
         </div>
-
 
     </div>
 
