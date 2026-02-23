@@ -149,7 +149,7 @@
                 <div class="absolute inset-0 bg-white/60 backdrop-blur-[2px]"></div>
 
                 <img src="/assets/images/icon/bca.png"
-                    class="absolute top-4 right-4 h-8 z-10">
+                    class="absolute top-3 right-4 h-13 z-10">
 
                 <img src="/assets/images/icon/chip-atm.jpg"
                     class="absolute top-[55px] left-5 w-9 z-10">

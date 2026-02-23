@@ -46,83 +46,82 @@
                 @include('sections.footer')
             </div>
 
+            <!-- bunga bawah FIXED -->
+            <div class="fixed bottom-0 left-0 w-full pointer-events-none z-50 flex justify-center">
+
+                <img src="/assets/images/bg/bunga-bawah.png"
+                    class="w-full max-w-[480px]">
+
+            </div>
+
         </div>
-        <!-- bunga bawah -->
-        <div class="absolute bottom-0 left-0 w-full pointer-events-none z-10">
 
-            <img src="/assets/images/bg-/bunga-bawah.jpeg"
-                class="w-full">
-
-        </div>
-
-    </div>
-
-    <!-- ========================= -->
-    <!-- COUNTDOWN SCRIPT -->
-    <!-- ========================= -->
-    <script>
-        const targetDate = new Date("2026-03-28T10:00:00+07:00").getTime();
+        <!-- ========================= -->
+        <!-- COUNTDOWN SCRIPT -->
+        <!-- ========================= -->
+        <script>
+            const targetDate = new Date("2026-03-28T10:00:00+07:00").getTime();
 
 
-        function updateCountdown() {
+            function updateCountdown() {
 
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+                const now = new Date().getTime();
+                const distance = targetDate - now;
 
-            if (distance < 0) return;
+                if (distance < 0) return;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            const d = document.getElementById("cd_days");
-            const h = document.getElementById("cd_hours");
-            const m = document.getElementById("cd_minutes");
-            const s = document.getElementById("cd_seconds");
+                const d = document.getElementById("cd_days");
+                const h = document.getElementById("cd_hours");
+                const m = document.getElementById("cd_minutes");
+                const s = document.getElementById("cd_seconds");
 
-            if (d) d.innerHTML = days;
-            if (h) h.innerHTML = hours;
-            if (m) m.innerHTML = minutes;
-            if (s) s.innerHTML = seconds;
+                if (d) d.innerHTML = days;
+                if (h) h.innerHTML = hours;
+                if (m) m.innerHTML = minutes;
+                if (s) s.innerHTML = seconds;
 
-        }
+            }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
 
 
-        function addToCalendar() {
+            function addToCalendar() {
 
-            const title = "Wedding Alya & Anas";
-            const location = "Lokasi Pernikahan";
-            const details = "Undangan Pernikahan Alya & Anas";
+                const title = "Wedding Alya & Anas";
+                const location = "Lokasi Pernikahan";
+                const details = "Undangan Pernikahan Alya & Anas";
 
-            const start = "20260328T020000Z";
-            const end = "20260328T060000Z";
+                const start = "20260328T020000Z";
+                const end = "20260328T060000Z";
 
-            const url =
-                "https://www.google.com/calendar/render?action=TEMPLATE" +
-                "&text=" + encodeURIComponent(title) +
-                "&dates=" + start + "/" + end +
-                "&details=" + encodeURIComponent(details) +
-                "&location=" + encodeURIComponent(location);
+                const url =
+                    "https://www.google.com/calendar/render?action=TEMPLATE" +
+                    "&text=" + encodeURIComponent(title) +
+                    "&dates=" + start + "/" + end +
+                    "&details=" + encodeURIComponent(details) +
+                    "&location=" + encodeURIComponent(location);
 
-            window.open(url, "_blank");
+                window.open(url, "_blank");
 
-        }
-    </script>
+            }
+        </script>
 
-    <script>
-        function copyRekening(id) {
+        <script>
+            function copyRekening(id) {
 
-            const text = document.getElementById(id).innerText.replace(/\s/g, '');
-            navigator.clipboard.writeText(text);
+                const text = document.getElementById(id).innerText.replace(/\s/g, '');
+                navigator.clipboard.writeText(text);
 
-            alert("Nomor rekening berhasil disalin");
+                alert("Nomor rekening berhasil disalin");
 
-        }
-    </script>
+            }
+        </script>
 
 
 
