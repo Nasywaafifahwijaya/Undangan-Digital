@@ -30,7 +30,12 @@
         </div>
 
 
-
+        <!-- FLOWER FRAME BOTTOM -->
+        <img src="/assets/images/bg-/bunga-bawah.png"
+            class="absolute bottom-0 left-1/2 -translate-x-1/2
+            w-full max-w-[380px]
+            pointer-events-none
+            z-20 opacity-95">
         <!-- CONTENT -->
         <div class="relative z-10 flex flex-col justify-center h-full">
 

@@ -160,7 +160,7 @@
                 text-[#8b7a55]
                 mb-2">
 
-                Anas Dary Arianto, S.T
+                Anas Dary Arinto, S.T
 
             </h3>
 

@@ -25,20 +25,25 @@
     <!-- ================= BACKGROUND ================= -->
 
     <!-- blur layer -->
-    <div class="fixed inset-0 -z-30">
-        <img src="/assets/images/bg/cover-fix.jpeg"
-            class="w-full h-full object-cover md:scale-90 scale-100 blur-md opacity-40">
+    <div
+        class="fixed inset-0 -z-50"
+        style="
+        background-image: url('/assets/images/bg/cover-fix.jpeg');
+        background-size: cover;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    ">
     </div>
+
 
     <!-- main background -->
-    <div class="fixed inset-0 -z-20">
-        <img src="/assets/images/bg/cover-fix.jpeg"
-            class="w-full h-full object-cover object-center"
-            id="bg-main">
-    </div>
+    <!-- ================= BACKGROUND ================= -->
+
+
 
     <!-- overlay -->
-    <div class="fixed inset-0 -z-10 bg-[#fdf6ec]/40"></div>
+    <div class="fixed inset-0 -z-40 bg-[#fdf6ec]/20"></div>
 
     <!-- ================= CONTENT ================= -->
 
@@ -47,18 +52,19 @@
 
             {{-- COVER --}}
             <div x-show="!opened"
-     x-transition:leave="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-700"
-     x-transition:leave-start="opacity-100 scale-100"
-     x-transition:leave-end="opacity-0 scale-105">
-    @include('sections.cover')
-</div>
+                x-transition:leave="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-700"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-105">
+                @include('sections.cover')
+            </div>
 
             {{-- MAIN CONTENT --}}
             <div x-show="opened"
-     x-transition:enter="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-900 delay-150"
-     x-transition:enter-start="opacity-0 -translate-y-16 scale-95"
-     x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-     x-cloak>
+                x-transition:enter="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-900 delay-150"
+                x-transition:enter-start="opacity-0 -translate-y-16 scale-95"
+                x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                x-cloak>
+
 
                 @include('sections.detail-card')
                 @include('sections.opening')
@@ -75,81 +81,89 @@
         </div>
     </div>
 
-    <!-- ================= BUNGA FIXED ================= -->
+    <!-- ================= BUNGA ATAS FIXED ================= -->
+    <div
+        x-show="opened"
+        x-transition.opacity
+        class="fixed top-0 left-0 w-full pointer-events-none z-40 flex justify-center">
+
+        <img src="/assets/images/bg/bunga-atas.png"
+            class="w-full max-w-[480px] md:max-w-[560px]">
+    </div>
+
+    <!-- ================= BUNGA BAWAH ================= -->
 
     <div class="fixed bottom-0 left-0 w-full pointer-events-none z-50 flex justify-center">
         <img src="/assets/images/bg/bunga-bawah.png"
             class="w-full max-w-[480px] bunga-animasi">
     </div>
 
-    <!-- ================= PARALLAX SAFE ================= -->
 
-    <script>
-        let ticking = false;
 
-document.addEventListener("scroll", function () {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            const bgMain = document.getElementById("bg-main");
-            if (bgMain) {
-                const scrollY = window.scrollY;
-                bgMain.style.transform =
-                    `scale(1.03) translateY(${scrollY * 0.02}px)`;
-            }
-            ticking = false;
-        });
-        ticking = true;
-    }
-});
-    </script>
 
     <!-- ================= COUNTDOWN ================= -->
 
     <script>
-    const targetDate = new Date("2026-03-28T10:00:00+07:00").getTime();
+        const targetDate = new Date("2026-03-28T10:00:00+07:00").getTime();
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-        if (distance <= 0) {
-            document.getElementById("cd_days") && (cd_days.innerHTML = 0);
-            document.getElementById("cd_hours") && (cd_hours.innerHTML = 0);
-            document.getElementById("cd_minutes") && (cd_minutes.innerHTML = 0);
-            document.getElementById("cd_seconds") && (cd_seconds.innerHTML = 0);
-            return;
+            if (distance <= 0) {
+                document.getElementById("cd_days") && (cd_days.innerHTML = 0);
+                document.getElementById("cd_hours") && (cd_hours.innerHTML = 0);
+                document.getElementById("cd_minutes") && (cd_minutes.innerHTML = 0);
+                document.getElementById("cd_seconds") && (cd_seconds.innerHTML = 0);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const d = document.getElementById("cd_days");
+            const h = document.getElementById("cd_hours");
+            const m = document.getElementById("cd_minutes");
+            const s = document.getElementById("cd_seconds");
+
+            if (d) d.innerHTML = days;
+            if (h) h.innerHTML = hours;
+            if (m) m.innerHTML = minutes;
+            if (s) s.innerHTML = seconds;
         }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        const d = document.getElementById("cd_days");
-        const h = document.getElementById("cd_hours");
-        const m = document.getElementById("cd_minutes");
-        const s = document.getElementById("cd_seconds");
-
-        if (d) d.innerHTML = days;
-        if (h) h.innerHTML = hours;
-        if (m) m.innerHTML = minutes;
-        if (s) s.innerHTML = seconds;
-    }
-updateCountdown();
-setInterval(updateCountdown, 1000);
-</script>
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 
     <!-- ================= FLOWER ANIMATION ================= -->
 
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
 
         @keyframes bungaAngin {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-0.5deg); }
-            50% { transform: rotate(0.5deg); }
-            75% { transform: rotate(-0.3deg); }
-            100% { transform: rotate(0deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-0.5deg);
+            }
+
+            50% {
+                transform: rotate(0.5deg);
+            }
+
+            75% {
+                transform: rotate(-0.3deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
         }
 
         .bunga-animasi {
@@ -158,8 +172,13 @@ setInterval(updateCountdown, 1000);
         }
 
         @keyframes spinSlow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .animate-spin-slow {
@@ -167,83 +186,98 @@ setInterval(updateCountdown, 1000);
         }
     </style>
 
-<audio id="bgm" loop preload="auto">
-    <source src="/assets/audio/weeding-bgm.mp3" type="audio/mpeg">
-</audio>
+    <audio id="bgm" loop preload="auto">
+        <source src="/assets/audio/bermuara.mp3" type="audio/mpeg">
+    </audio>
 
-<div
-    x-data="musicPlayer()"
-    x-init="init()"
-    class="fixed bottom-6 right-6 z-50"
->
-    <button
-        @click="toggle()"
-        class="w-14 h-14 rounded-full bg-[#5c3a3a] text-white shadow-xl flex items-center justify-center transition hover:scale-105"
-    >
-        <svg 
-            x-show="playing"
-            class="w-6 h-6 animate-spin-slow"
-            fill="currentColor"
-            viewBox="0 0 24 24">
-            <path d="M12 3v18m9-9H3"/>
-        </svg>
+    <div
+        x-data="musicPlayer()"
+        x-init="init()"
+        class="fixed bottom-6 right-6 z-50">
+        <button
+            @click="toggle()"
+            class="w-14 h-14 rounded-full bg-[#5c3a3a] text-white shadow-xl flex items-center justify-center transition hover:scale-105">
+            <svg
+                x-show="playing"
+                class="w-6 h-6 animate-spin-slow"
+                fill="currentColor"
+                viewBox="0 0 24 24">
+                <path d="M12 3v18m9-9H3" />
+            </svg>
 
-        <svg
-            x-show="!playing"
-            class="w-6 h-6"
-            fill="currentColor"
-            viewBox="0 0 24 24">
-            <path d="M5 3v18l15-9L5 3z"/>
-        </svg>
-    </button>
-</div>
+            <svg
+                x-show="!playing"
+                class="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 24 24">
+                <path d="M5 3v18l15-9L5 3z" />
+            </svg>
+        </button>
+    </div>
 
-<script>
-function musicPlayer() {
-    return {
-        playing: false,
-        audio: null,
+    <script>
+        function musicPlayer() {
+            return {
+                playing: false,
+                audio: null,
 
-        init() {
-            this.audio = document.getElementById('bgm');
-            this.audio.volume = 0;
+                init() {
+                    this.audio = document.getElementById('bgm');
+                    this.audio.volume = 0;
 
-            window.addEventListener('start-music', () => {
-                this.playWithFade();
-            });
-        },
+                    window.addEventListener('start-music', () => {
+                        this.playWithFade();
+                    });
+                },
 
-        playWithFade() {
-            if (!this.audio.paused) return;
+                playWithFade() {
+                    if (!this.audio.paused) return;
 
-            this.audio.play().then(() => {
-                this.playing = true;
+                    const startTime = 118; // 01:58
 
-                let volume = 0;
-                const fade = setInterval(() => {
-                    if (volume < 0.35) {
-                        volume += 0.02;
-                        this.audio.volume = volume;
+                    const startPlayback = () => {
+                        this.audio.currentTime = startTime;
+
+                        this.audio.play().then(() => {
+                            this.playing = true;
+
+                            let volume = 0;
+                            const fade = setInterval(() => {
+                                if (volume < 0.25) {
+                                    volume += 0.02;
+                                    this.audio.volume = volume;
+                                } else {
+                                    clearInterval(fade);
+                                }
+                            }, 200);
+                        }).catch(err => {
+                            console.log('Playback error:', err);
+                        });
+
+                        this.audio.removeEventListener('canplay', startPlayback);
+                    };
+
+                    // Kalau metadata sudah siap
+                    if (this.audio.readyState >= 3) {
+                        startPlayback();
                     } else {
-                        clearInterval(fade);
+                        this.audio.addEventListener('canplay', startPlayback);
+                        this.audio.load();
                     }
-                }, 200);
-            }).catch(err => {
-                console.log('Autoplay blocked:', err);
-            });
-        },
+                },
 
-        toggle() {
-            if (this.audio.paused) {
-                this.playWithFade();
-            } else {
-                this.audio.pause();
-                this.playing = false;
+                toggle() {
+                    if (this.audio.paused) {
+                        this.playWithFade();
+                    } else {
+                        this.audio.pause();
+                        this.playing = false;
+                    }
+                }
             }
         }
-    }
-}
-</script>
+    </script>
 
 </body>
+
 </html>

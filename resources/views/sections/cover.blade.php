@@ -2,62 +2,57 @@
     x-data="{ open: false }"
     x-show="!opened"
     x-transition.opacity.duration.500ms
-    class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
+    class="relative w-full h-screen overflow-hidden">
 
-    {{-- <!-- Overlay lembut agar teks terbaca -->
-    <div class="absolute inset-0 bg-[#fdf6ec]/70 z-0"></div> --}}
-
-    {{-- <!-- Tirai kiri -->
+    <!-- ARCH FULL SCREEN -->
     <img
-        src="/assets/images/tirai-left.png"
-        alt="Tirai kiri"
-        class="absolute left-0 top-0 h-full w-auto z-10
-               transition-transform transition-opacity duration-1000 ease-in-out"
+        src="/assets/images/bg/arch.png"
+        alt="Wedding Arch"
+        class="absolute inset-0 w-full h-full object-cover z-10
+               transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
         :class="open
-            ? '-translate-x-full opacity-0'
-            : 'translate-x-0 opacity-100'"> --}}
-
-    {{-- <!-- Tirai kanan -->
-    <img
-        src="/assets/images/tirai-right.png"
-        alt="Tirai kanan"
-        class="absolute right-0 top-0 h-full w-auto z-10
-               transition-transform transition-opacity duration-1000 ease-in-out"
-        :class="open
-            ? 'translate-x-full opacity-0'
-            : 'translate-x-0 opacity-100'"> --}}
+            ? 'opacity-0 scale-110'
+            : 'opacity-100 scale-100'">
 
     <!-- Konten tengah -->
     <div
-        class="relative z-20 px-6 text-center
-               transition-all duration-700 ease-in-out"
+        class="relative z-20 h-full flex flex-col items-center justify-center
+           px-6 text-center pt-24
+           transition-all duration-700 ease-in-out"
         :class="open
-            ? 'opacity-0 scale-95'
-            : 'opacity-100 scale-100'">
-        <h1 class="text-4xl font-[Playfair_Display] mb-4">
-            Alya & Anas
-        </h1>
+        ? 'opacity-0 scale-95'
+        : 'opacity-100 scale-100'">
 
-        <p class="mb-8 text-sm tracking-widest">
+        <!-- THE WEDDING OF -->
+        <p class="text-sm md:text-base tracking-[0.10em]
+          font-normal text-[#1e2a44]
+          mb-4">
             THE WEDDING OF
         </p>
 
+        <!-- NAMA -->
+        <h1 class="text-5xl md:text-6xl
+               font-[Playfair_Display] font-bold
+               text-[#2f2f2f]
+               drop-shadow-sm
+               mb-10 leading-tight">
+            Alya & Anas
+        </h1>
+
+        <!-- BUTTON -->
         <button
-        @click="
-            opened = true;
-            window.dispatchEvent(new Event('start-music'))
+            @click="
+            open = true;
+            setTimeout(() => opened = true, 900);
+            window.dispatchEvent(new Event('start-music'));
         "
-        class="px-8 py-3 rounded-full bg-[#e7cbb1]
-            text-sm font-medium shadow-md">
-        Buka Undangan
+            class="px-10 py-3 rounded-full bg-[#cfe5f7]
+       text-[#1e2a44]
+       text-sm font-semibold shadow-md
+       hover:bg-[#bcdaf3]
+       hover:scale-105 transition">
+            Buka Undangan
         </button>
 
     </div>
-
-    <!-- Bunga bawah -->
-    <img
-        src="/assets/images/bunga-bawah.png"
-        alt="Bunga bawah"
-        class="absolute bottom-0 left-1/2 -translate-x-1/2
-               w-full max-w-md z-10 pointer-events-none">
 </section>
