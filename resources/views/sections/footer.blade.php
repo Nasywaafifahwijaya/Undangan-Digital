@@ -2,7 +2,9 @@
 
     <!-- FRAME FULL LAYAR -->
     <div class="
-    absolute inset-0
+    absolute top-0 left-0 right-0 bottom-0
+    max-w-[480px]
+    mx-auto
     rounded-none
     border border-[#c6b89a]
 "
@@ -15,10 +17,12 @@
 
     <!-- INNER FRAME -->
     <div class="
-    absolute inset-4
-    border border-[#c6b89a]/70
+    absolute top-6 left-6 right-6 bottom-6
+    border border-[#c6b89a]/80
+    rounded-[6px]
     pointer-events-none
-">
+"
+    style="box-shadow: inset 0 0 0 1px rgba(198,184,154,0.3);">
     </div>
 
 
