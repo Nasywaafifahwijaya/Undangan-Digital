@@ -4,10 +4,10 @@
     x-transition.opacity.duration.500ms
     class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
 
-    <!-- Overlay lembut agar teks terbaca -->
-    <div class="absolute inset-0 bg-[#fdf6ec]/70 z-0"></div>
+    {{-- <!-- Overlay lembut agar teks terbaca -->
+    <div class="absolute inset-0 bg-[#fdf6ec]/70 z-0"></div> --}}
 
-    <!-- Tirai kiri -->
+    {{-- <!-- Tirai kiri -->
     <img
         src="/assets/images/tirai-left.png"
         alt="Tirai kiri"
@@ -15,9 +15,9 @@
                transition-transform transition-opacity duration-1000 ease-in-out"
         :class="open
             ? '-translate-x-full opacity-0'
-            : 'translate-x-0 opacity-100'">
+            : 'translate-x-0 opacity-100'"> --}}
 
-    <!-- Tirai kanan -->
+    {{-- <!-- Tirai kanan -->
     <img
         src="/assets/images/tirai-right.png"
         alt="Tirai kanan"
@@ -25,7 +25,7 @@
                transition-transform transition-opacity duration-1000 ease-in-out"
         :class="open
             ? 'translate-x-full opacity-0'
-            : 'translate-x-0 opacity-100'">
+            : 'translate-x-0 opacity-100'"> --}}
 
     <!-- Konten tengah -->
     <div
@@ -43,19 +43,15 @@
         </p>
 
         <button
-            @click="
-                open = true;
-                opened = true;
-                window.location.hash = 'open';
-                setTimeout(() => {
-                    document.getElementById('opening')
-                        ?.scrollIntoView({ behavior: 'smooth' });
-                }, 400);
-            "
-            class="px-8 py-3 rounded-full bg-[#e7cbb1]
-                   text-sm font-medium shadow-md">
-            Buka Undangan
+        @click="
+            opened = true;
+            window.dispatchEvent(new Event('start-music'))
+        "
+        class="px-8 py-3 rounded-full bg-[#e7cbb1]
+            text-sm font-medium shadow-md">
+        Buka Undangan
         </button>
+
     </div>
 
     <!-- Bunga bawah -->

@@ -1,4 +1,5 @@
-<section class="min-h-screen flex items-center justify-center px-4 py-16">
+<section id="detail-card"
+    class="min-h-screen flex items-center justify-center px-4 py-16">
 
     <div class="relative
         w-full max-w-[420px]

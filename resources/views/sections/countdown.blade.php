@@ -99,7 +99,7 @@
 
 
             <!-- BUTTON -->
-            <button onclick="addToCalendar()"
+            <button type="button" onclick="addToCalendar()"
                 class="px-6 py-2.5
 
                 border border-[#5c3a3a]/70

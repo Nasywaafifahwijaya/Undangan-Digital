@@ -169,7 +169,7 @@
                     text-[11px]
                     text-[#5c3a3a]">
 
-                    Anas Dary Arinto
+                    Anas Dary Arianto
 
                 </div>
 

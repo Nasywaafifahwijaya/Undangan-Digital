@@ -1,4 +1,4 @@
-<section id="akad"
+<section id="resepsi"
     class="flex justify-center px-4 py-20">
 
     <div class="relative
