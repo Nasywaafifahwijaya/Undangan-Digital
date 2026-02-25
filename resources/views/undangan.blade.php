@@ -14,95 +14,97 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 
-
 <body
-    x-data="{
-        opened: !!(window.location.hash || window.location.search)
+    x-data="{ 
+        opened: !!(window.location.hash || window.location.search),
+        isMobile: window.innerWidth < 1024
     }"
-    :class="opened ? 'overflow-auto' : 'overflow-hidden'"
-    class="relative min-h-screen w-full text-gray-800 font-[Poppins] overflow-x-hidden bg-transparent">
+    @resize.window="isMobile = window.innerWidth < 1024"
+    class="relative min-h-screen w-full font-[Poppins] text-gray-800 bg-[#2f2f2f] overflow-x-hidden">
 
-    <!-- ================= BACKGROUND ================= -->
+    <div class="fixed inset-0 -z-40 bg-[#fdf6ec]/20"></div>
 
-    <!-- blur layer -->
-    <div
-        class="fixed inset-0 -z-50"
-        style="
-        background-image: url('/assets/images/bg/cover-fix.jpeg');
-        background-size: cover;
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    ">
+
+    <!-- ================= DESKTOP LEFT IMAGE (70%) ================= -->
+    <div class="hidden lg:block lg:fixed lg:inset-y-0 lg:left-0 lg:w-[70%] z-0 bg-gray-900">
+
+        <img src="/assets/images/foto/alyaanas.jpeg"
+            class="absolute inset-0 w-full h-full object-cover object-[center_17%]">
+
+        <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <!-- Gradient depth -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-transparent"></div>
+
     </div>
 
 
-    <!-- main background -->
-    <!-- ================= BACKGROUND ================= -->
+    <!-- ================= RIGHT PANEL (30%) ================= -->
+    <div class="relative w-full min-h-screen lg:h-screen">
 
+        <div class="w-full min-h-screen lg:h-screen lg:w-[30%] lg:ml-[70%] lg:overflow-y-auto flex justify-center relative shadow-2xl right-panel-bg"
+            style="
+            background-image: url('/assets/images/bg/cover-fix.jpeg');
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;">
 
+            <!-- Soft divider shadow -->
+            <div class="hidden lg:block absolute left-0 top-0 h-full w-[30px] bg-gradient-to-r from-black/30 to-transparent pointer-events-none"></div>
 
-    <!-- overlay -->
-    <div class="fixed inset-0 -z-40 bg-[#fdf6ec]/20"></div>
+            <div class="w-full max-w-[480px] md:max-w-[560px] relative z-10">
 
-    <!-- ================= CONTENT ================= -->
+                {{-- COVER --}}
+                <div x-show="!opened"
+                    x-transition:leave="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-700"
+                    x-transition:leave-start="opacity-100 scale-100"
+                    x-transition:leave-end="opacity-0 scale-105">
+                    @include('sections.cover')
+                </div>
 
-    <div class="relative w-full flex justify-center">
-        <div class="w-full max-w-[480px] md:max-w-[560px]">
+                {{-- MAIN CONTENT --}}
+                <div x-show="opened"
+                    x-transition:enter="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-900 delay-150"
+                    x-transition:enter-start="opacity-0 -translate-y-16 scale-95"
+                    x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                    x-cloak>
 
-            {{-- COVER --}}
-            <div x-show="!opened"
-                x-transition:leave="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-700"
-                x-transition:leave-start="opacity-100 scale-100"
-                x-transition:leave-end="opacity-0 scale-105">
-                @include('sections.cover')
+                    @include('sections.detail-card')
+                    @include('sections.opening')
+                    @include('sections.bride-groom')
+                    @include('sections.countdown')
+                    @include('sections.akad')
+                    @include('sections.resepsi')
+                    @include('sections.wedding-gift')
+                    @include('sections.rsvp')
+                    @include('sections.footer')
+
+                </div>
+
             </div>
-
-            {{-- MAIN CONTENT --}}
-            <div x-show="opened"
-                x-transition:enter="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-900 delay-150"
-                x-transition:enter-start="opacity-0 -translate-y-16 scale-95"
-                x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                x-cloak>
-
-
-                @include('sections.detail-card')
-                @include('sections.opening')
-                @include('sections.bride-groom')
-                @include('sections.countdown')
-                @include('sections.akad')
-                @include('sections.resepsi')
-                @include('sections.wedding-gift')
-                @include('sections.rsvp')
-                @include('sections.footer')
-
-            </div>
-
         </div>
     </div>
 
-    <!-- ================= BUNGA ATAS FIXED ================= -->
-    <div
-        x-show="opened"
+
+    <!-- ================= BUNGA ATAS ================= -->
+    <div x-show="opened"
         x-transition.opacity
-        class="fixed top-0 left-0 w-full pointer-events-none z-40 flex justify-center">
+        class="fixed top-0 right-0 w-full lg:w-[30%] pointer-events-none z-40 flex justify-center">
 
         <img src="/assets/images/bg/bunga-atas.png"
             class="w-full max-w-[480px] md:max-w-[560px]">
     </div>
 
-    <!-- ================= BUNGA BAWAH ================= -->
 
-    <div class="fixed bottom-0 left-0 w-full pointer-events-none z-50 flex justify-center">
+    <!-- ================= BUNGA BAWAH ================= -->
+    <div class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40 flex justify-center">
         <img src="/assets/images/bg/bunga-bawah.png"
-            class="w-full max-w-[480px] bunga-animasi">
+            class="w-full max-w-[480px] md:max-w-[560px] bunga-animasi">
     </div>
 
 
-
-
     <!-- ================= COUNTDOWN ================= -->
-
     <script>
         const targetDate = new Date("2026-03-28T10:00:00+07:00").getTime();
 
@@ -110,60 +112,34 @@
             const now = new Date().getTime();
             const distance = targetDate - now;
 
-            if (distance <= 0) {
-                document.getElementById("cd_days") && (cd_days.innerHTML = 0);
-                document.getElementById("cd_hours") && (cd_hours.innerHTML = 0);
-                document.getElementById("cd_minutes") && (cd_minutes.innerHTML = 0);
-                document.getElementById("cd_seconds") && (cd_seconds.innerHTML = 0);
-                return;
-            }
+            if (distance <= 0) return;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            const d = document.getElementById("cd_days");
-            const h = document.getElementById("cd_hours");
-            const m = document.getElementById("cd_minutes");
-            const s = document.getElementById("cd_seconds");
-
-            if (d) d.innerHTML = days;
-            if (h) h.innerHTML = hours;
-            if (m) m.innerHTML = minutes;
-            if (s) s.innerHTML = seconds;
+            if (cd_days) cd_days.innerHTML = days;
+            if (cd_hours) cd_hours.innerHTML = hours;
+            if (cd_minutes) cd_minutes.innerHTML = minutes;
+            if (cd_seconds) cd_seconds.innerHTML = seconds;
         }
+
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
 
-    <!-- ================= FLOWER ANIMATION ================= -->
 
+    <!-- ================= FLOWER ANIMATION ================= -->
     <style>
-        [x-cloak] {
-            display: none !important;
-        }
+        [x-cloak] { display: none !important; }
 
         @keyframes bungaAngin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(-0.5deg);
-            }
-
-            50% {
-                transform: rotate(0.5deg);
-            }
-
-            75% {
-                transform: rotate(-0.3deg);
-            }
-
-            100% {
-                transform: rotate(0deg);
-            }
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-0.5deg); }
+            50% { transform: rotate(0.5deg); }
+            75% { transform: rotate(-0.3deg); }
+            100% { transform: rotate(0deg); }
         }
 
         .bunga-animasi {
@@ -172,46 +148,57 @@
         }
 
         @keyframes spinSlow {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .animate-spin-slow {
             animation: spinSlow 6s linear infinite;
         }
+
+        /* Desktop: background scroll dengan content */
+        @media (min-width: 1024px) {
+            .right-panel-bg {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Mobile: background fixed di body */
+        @media (max-width: 1023px) {
+            body {
+                background-image: url('/assets/images/bg/cover-fix.jpeg');
+                background-size: cover;
+                background-position: top center;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+            }
+            
+            /* Remove background dari right panel di mobile karena sudah ada di body */
+            .right-panel-bg {
+                background-image: none !important;
+            }
+        }
     </style>
 
+
+    <!-- ================= AUDIO ================= -->
     <audio id="bgm" loop preload="auto">
         <source src="/assets/audio/bermuara.mp3" type="audio/mpeg">
     </audio>
 
-    <div
-        x-data="musicPlayer()"
-        x-init="init()"
-        class="fixed bottom-6 right-6 z-50">
-        <button
-            @click="toggle()"
+    <div x-data="musicPlayer()" x-init="init()" class="fixed bottom-6 right-6 z-50">
+
+        <button @click="toggle()"
             class="w-14 h-14 rounded-full bg-[#5c3a3a] text-white shadow-xl flex items-center justify-center transition hover:scale-105">
-            <svg
-                x-show="playing"
-                class="w-6 h-6 animate-spin-slow"
-                fill="currentColor"
-                viewBox="0 0 24 24">
+
+            <svg x-show="playing" class="w-6 h-6 animate-spin-slow" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 3v18m9-9H3" />
             </svg>
 
-            <svg
-                x-show="!playing"
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24">
+            <svg x-show="!playing" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M5 3v18l15-9L5 3z" />
             </svg>
+
         </button>
     </div>
 
@@ -233,37 +220,18 @@
                 playWithFade() {
                     if (!this.audio.paused) return;
 
-                    const startTime = 118; // 01:58
-
-                    const startPlayback = () => {
-                        this.audio.currentTime = startTime;
-
-                        this.audio.play().then(() => {
-                            this.playing = true;
-
-                            let volume = 0;
-                            const fade = setInterval(() => {
-                                if (volume < 0.25) {
-                                    volume += 0.02;
-                                    this.audio.volume = volume;
-                                } else {
-                                    clearInterval(fade);
-                                }
-                            }, 200);
-                        }).catch(err => {
-                            console.log('Playback error:', err);
-                        });
-
-                        this.audio.removeEventListener('canplay', startPlayback);
-                    };
-
-                    // Kalau metadata sudah siap
-                    if (this.audio.readyState >= 3) {
-                        startPlayback();
-                    } else {
-                        this.audio.addEventListener('canplay', startPlayback);
-                        this.audio.load();
-                    }
+                    this.audio.play().then(() => {
+                        this.playing = true;
+                        let volume = 0;
+                        const fade = setInterval(() => {
+                            if (volume < 0.25) {
+                                volume += 0.02;
+                                this.audio.volume = volume;
+                            } else {
+                                clearInterval(fade);
+                            }
+                        }, 200);
+                    });
                 },
 
                 toggle() {
@@ -279,5 +247,4 @@
     </script>
 
 </body>
-
 </html>
