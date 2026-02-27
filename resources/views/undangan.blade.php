@@ -90,17 +90,17 @@
     <!-- ================= BUNGA ATAS ================= -->
     <div x-show="opened"
         x-transition.opacity
-        class="fixed top-0 right-0 w-full lg:w-[30%] pointer-events-none z-40 flex justify-center">
+        class="fixed top-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-atas.png"
-            class="w-full max-w-[480px] md:max-w-[560px]">
+            class="w-full h-auto">
     </div>
 
 
     <!-- ================= BUNGA BAWAH ================= -->
-    <div class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40 flex justify-center">
+    <div class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
         <img src="/assets/images/bg/bunga-bawah.png"
-            class="w-full max-w-[480px] md:max-w-[560px] bunga-animasi">
+            class="w-full h-auto bunga-animasi">
     </div>
 
 
