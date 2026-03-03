@@ -17,41 +17,37 @@
 <body
     x-data="{ 
         opened: !!(window.location.hash || window.location.search),
-        isMobile: window.innerWidth < 1024
+        isMobile: window.innerWidth < 1280
     }"
-    @resize.window="isMobile = window.innerWidth < 1024"
+    @resize.window="isMobile = window.innerWidth < 1280"
     class="relative min-h-screen w-full font-[Poppins] text-gray-800 bg-[#2f2f2f] overflow-x-hidden">
 
     <div class="fixed inset-0 -z-40 bg-[#fdf6ec]/20"></div>
 
 
     <!-- ================= DESKTOP LEFT IMAGE (70%) ================= -->
-    <div class="hidden lg:block lg:fixed lg:inset-y-0 lg:left-0 lg:w-[70%] z-0 bg-gray-900">
+    <div class="hidden xl:block xl:fixed xl:inset-y-0 xl:left-0 xl:w-[70%] z-0 bg-gray-900">
 
         <img src="/assets/images/foto/alyaanas.jpeg"
             class="absolute inset-0 w-full h-full object-cover object-[center_17%]">
 
-        <!-- Dark overlay -->
         <div class="absolute inset-0 bg-black/20"></div>
-
-        <!-- Gradient depth -->
         <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-transparent"></div>
 
     </div>
 
 
     <!-- ================= RIGHT PANEL (30%) ================= -->
-    <div class="relative w-full min-h-screen lg:h-screen">
+    <div class="relative w-full min-h-screen xl:h-screen">
 
-        <div class="w-full min-h-screen lg:h-screen lg:w-[30%] lg:ml-[70%] lg:overflow-y-auto flex justify-center relative shadow-2xl right-panel-bg"
+        <div class="w-full min-h-screen xl:h-screen xl:w-[30%] xl:ml-[70%] xl:overflow-y-auto flex justify-center relative shadow-2xl right-panel-bg"
             style="
             background-image: url('/assets/images/bg/cover-fix.jpeg');
             background-size: cover;
             background-position: top center;
             background-repeat: no-repeat;">
 
-            <!-- Soft divider shadow -->
-            <div class="hidden lg:block absolute left-0 top-0 h-full w-[30px] bg-gradient-to-r from-black/30 to-transparent pointer-events-none"></div>
+            <div class="hidden xl:block absolute left-0 top-0 h-full w-[30px] bg-gradient-to-r from-black/30 to-transparent pointer-events-none"></div>
 
             <div class="w-full max-w-[480px] md:max-w-[560px] relative z-10">
 
@@ -90,36 +86,32 @@
     <!-- ================= BUNGA ATAS ================= -->
     <div x-show="opened"
         x-transition.opacity
-        class="fixed top-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
+        class="fixed top-0 right-0 w-full xl:w-[30%] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-atas.png"
             class="w-full h-auto">
     </div>
 
 
-    <!-- ================= BUNGA BAWAH ================= -->
-
-    <!-- Bunga untuk COVER -->
+    <!-- ================= BUNGA BAWAH COVER ================= -->
     <div
         x-show="!opened"
         x-transition.opacity
-        class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
+        class="fixed bottom-0 right-0 w-full xl:w-[30%] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah.png"
             class="w-full h-auto bunga-animasi">
-
     </div>
 
 
-    <!-- Bunga untuk SEMUA SECTION SETELAH COVER -->
+    <!-- ================= BUNGA BAWAH MAIN ================= -->
     <div
         x-show="opened"
         x-transition.opacity
-        class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
+        class="fixed bottom-0 right-0 w-full xl:w-[30%] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah3.png"
             class="w-full h-auto bunga-animasi">
-
     </div>
 
 
@@ -156,25 +148,11 @@
         }
 
         @keyframes bungaAngin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(-0.5deg);
-            }
-
-            50% {
-                transform: rotate(0.5deg);
-            }
-
-            75% {
-                transform: rotate(-0.3deg);
-            }
-
-            100% {
-                transform: rotate(0deg);
-            }
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-0.5deg); }
+            50% { transform: rotate(0.5deg); }
+            75% { transform: rotate(-0.3deg); }
+            100% { transform: rotate(0deg); }
         }
 
         .bunga-animasi {
@@ -183,28 +161,23 @@
         }
 
         @keyframes spinSlow {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .animate-spin-slow {
             animation: spinSlow 6s linear infinite;
         }
 
-        /* Desktop: background scroll dengan content */
-        @media (min-width: 1024px) {
+        /* Desktop 70/30 aktif mulai 1280px */
+        @media (min-width: 1280px) {
             .right-panel-bg {
                 background-attachment: scroll;
             }
         }
 
-        /* Mobile: background fixed di body */
-        @media (max-width: 1023px) {
+        /* Mobile & Tablet */
+        @media (max-width: 1279px) {
             body {
                 background-image: url('/assets/images/bg/cover-fix.jpeg');
                 background-size: cover;
@@ -213,7 +186,6 @@
                 background-repeat: no-repeat;
             }
 
-            /* Remove background dari right panel di mobile karena sudah ada di body */
             .right-panel-bg {
                 background-image: none !important;
             }
@@ -287,5 +259,4 @@
     </script>
 
 </body>
-
 </html>
