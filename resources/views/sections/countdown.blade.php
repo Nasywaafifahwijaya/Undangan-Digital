@@ -121,5 +121,28 @@
         </div>
 
     </div>
+    <script>
+        function addToCalendar() {
+
+            const title = "Wedding Alya & Anas";
+            const location = "Lokasi Pernikahan";
+            const details = "Undangan Pernikahan Alya & Anas";
+
+            // Waktu WIB 10:00 - 17:00
+            // Google Calendar pakai format UTC (Z)
+            const start = "20260328T030000Z"; // 10:00 WIB
+            const end = "20260328T100000Z"; // 17:00 WIB
+
+            const url =
+                "https://www.google.com/calendar/render?action=TEMPLATE" +
+                "&text=" + encodeURIComponent(title) +
+                "&dates=" + start + "/" + end +
+                "&details=" + encodeURIComponent(details) +
+                "&location=" + encodeURIComponent(location);
+
+            window.open(url, "_blank");
+
+        }
+    </script>
 
 </section>
