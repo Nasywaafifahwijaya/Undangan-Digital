@@ -8,11 +8,8 @@
     <img
         src="/assets/images/bg/arch2hd.png"
         alt="Wedding Arch"
-        class="absolute inset-0 w-full h-full object-contain scale-200 object-center z-10
-               transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
-        :class="open
-            ? 'opacity-0'
-            : 'opacity-100'">
+        class="absolute inset-0 w-full h-full object-cover object-center z-10
+           transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]">
 
     <!-- Konten tengah - ADJUSTED POSITIONING -->
     <div

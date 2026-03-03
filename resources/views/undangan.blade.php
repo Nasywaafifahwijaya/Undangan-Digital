@@ -98,9 +98,28 @@
 
 
     <!-- ================= BUNGA BAWAH ================= -->
-    <div class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
+
+    <!-- Bunga untuk COVER -->
+    <div
+        x-show="!opened"
+        x-transition.opacity
+        class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
+
         <img src="/assets/images/bg/bunga-bawah.png"
             class="w-full h-auto bunga-animasi">
+
+    </div>
+
+
+    <!-- Bunga untuk SEMUA SECTION SETELAH COVER -->
+    <div
+        x-show="opened"
+        x-transition.opacity
+        class="fixed bottom-0 right-0 w-full lg:w-[30%] pointer-events-none z-40">
+
+        <img src="/assets/images/bg/bunga-bawah3.png"
+            class="w-full h-auto bunga-animasi">
+
     </div>
 
 
@@ -132,14 +151,30 @@
 
     <!-- ================= FLOWER ANIMATION ================= -->
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
 
         @keyframes bungaAngin {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-0.5deg); }
-            50% { transform: rotate(0.5deg); }
-            75% { transform: rotate(-0.3deg); }
-            100% { transform: rotate(0deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-0.5deg);
+            }
+
+            50% {
+                transform: rotate(0.5deg);
+            }
+
+            75% {
+                transform: rotate(-0.3deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
         }
 
         .bunga-animasi {
@@ -148,8 +183,13 @@
         }
 
         @keyframes spinSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .animate-spin-slow {
@@ -172,7 +212,7 @@
                 background-attachment: fixed;
                 background-repeat: no-repeat;
             }
-            
+
             /* Remove background dari right panel di mobile karena sudah ada di body */
             .right-panel-bg {
                 background-image: none !important;
@@ -247,4 +287,5 @@
     </script>
 
 </body>
+
 </html>

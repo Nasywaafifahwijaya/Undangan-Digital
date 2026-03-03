@@ -111,7 +111,7 @@
 
                 <div class="text-sm mt-2 leading-relaxed">
 
-                    Glugur Darat I, Kec. Medan Timur,<br>
+                    Jl. Mustafa, Glugur Darat I, Kec. Medan Timur,<br>
                     Kota Medan
 
                 </div>
