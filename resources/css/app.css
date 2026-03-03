@@ -22,3 +22,7 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+html {
+    -webkit-text-size-adjust: 100%;
+}

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Undangan Pernikahan</title>
 
     <meta name="description" content="Undangan Pernikahan Alya & Anas">
@@ -15,78 +15,61 @@
 </head>
 
 <body
-    x-data="{ 
-        opened: !!(window.location.hash || window.location.search),
-        isMobile: window.innerWidth < 1280
-    }"
-    @resize.window="isMobile = window.innerWidth < 1280"
-    class="relative min-h-screen w-full font-[Poppins] text-gray-800 bg-[#2f2f2f] overflow-x-hidden">
-
-    <div class="fixed inset-0 -z-40 bg-[#fdf6ec]/20"></div>
+    x-data="{ opened: !!(window.location.hash || window.location.search) }"
+    class="relative min-h-screen flex items-center justify-center bg-black font-[Poppins] text-gray-800 overflow-x-hidden">
 
 
-    <!-- ================= DESKTOP LEFT IMAGE (70%) ================= -->
-    <div class="hidden xl:block xl:fixed xl:inset-y-0 xl:left-0 xl:w-[70%] z-0 bg-gray-900">
+    <!-- ================= 9:16 WRAPPER ================= -->
+    <div class="relative w-full max-w-[430px] aspect-[9/16] bg-[#fdf6ec] shadow-2xl overflow-hidden">
 
-        <img src="/assets/images/foto/alyaanas.jpeg"
-            class="absolute inset-0 w-full h-full object-cover object-[center_17%]">
+        <!-- ================= BACKGROUND ================= -->
+        <div class="absolute inset-0 z-0">
+            <img src="/assets/images/bg/cover-fix.jpeg"
+                class="w-full h-full object-cover object-center">
+        </div>
 
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-black/30 to-transparent"></div>
-
-    </div>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-[#fdf6ec]/20 z-10"></div>
 
 
-    <!-- ================= RIGHT PANEL (30%) ================= -->
-    <div class="relative w-full min-h-screen xl:h-screen">
+        {{-- COVER --}}
+        <div x-show="!opened"
+            x-transition:leave="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-700"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-105"
+            class="relative z-20">
 
-        <div class="w-full min-h-screen xl:h-screen xl:w-[30%] xl:ml-[70%] xl:overflow-y-auto flex justify-center relative shadow-2xl right-panel-bg"
-            style="
-            background-image: url('/assets/images/bg/cover-fix.jpeg');
-            background-size: cover;
-            background-position: top center;
-            background-repeat: no-repeat;">
+            @include('sections.cover')
+        </div>
 
-            <div class="hidden xl:block absolute left-0 top-0 h-full w-[30px] bg-gradient-to-r from-black/30 to-transparent pointer-events-none"></div>
 
-            <div class="w-full max-w-[480px] md:max-w-[560px] relative z-10">
+        {{-- MAIN CONTENT --}}
+        <div x-show="opened"
+            x-transition:enter="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-900 delay-150"
+            x-transition:enter-start="opacity-0 -translate-y-16 scale-95"
+            x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+            x-cloak
+            class="relative z-20 h-full overflow-y-auto">
 
-                {{-- COVER --}}
-                <div x-show="!opened"
-                    x-transition:leave="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-700"
-                    x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-105">
-                    @include('sections.cover')
-                </div>
+            @include('sections.detail-card')
+            @include('sections.opening')
+            @include('sections.bride-groom')
+            @include('sections.countdown')
+            @include('sections.akad')
+            @include('sections.resepsi')
+            @include('sections.wedding-gift')
+            @include('sections.rsvp')
+            @include('sections.footer')
 
-                {{-- MAIN CONTENT --}}
-                <div x-show="opened"
-                    x-transition:enter="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-900 delay-150"
-                    x-transition:enter-start="opacity-0 -translate-y-16 scale-95"
-                    x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                    x-cloak>
-
-                    @include('sections.detail-card')
-                    @include('sections.opening')
-                    @include('sections.bride-groom')
-                    @include('sections.countdown')
-                    @include('sections.akad')
-                    @include('sections.resepsi')
-                    @include('sections.wedding-gift')
-                    @include('sections.rsvp')
-                    @include('sections.footer')
-
-                </div>
-
-            </div>
         </div>
     </div>
+
 
 
     <!-- ================= BUNGA ATAS ================= -->
     <div x-show="opened"
         x-transition.opacity
-        class="fixed top-0 right-0 w-full xl:w-[30%] pointer-events-none z-40">
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-atas.png"
             class="w-full h-auto">
@@ -97,10 +80,10 @@
     <div
         x-show="!opened"
         x-transition.opacity
-        class="fixed bottom-0 right-0 w-full xl:w-[30%] pointer-events-none z-40">
+        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah.png"
-            class="w-full h-auto bunga-animasi">
+            class="w-full h-auto">
     </div>
 
 
@@ -108,14 +91,15 @@
     <div
         x-show="opened"
         x-transition.opacity
-        class="fixed bottom-0 right-0 w-full xl:w-[30%] pointer-events-none z-40">
+        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah3.png"
-            class="w-full h-auto bunga-animasi">
+            class="w-full h-auto">
     </div>
 
 
-    <!-- ================= COUNTDOWN ================= -->
+
+    <!-- ================= COUNTDOWN SCRIPT ================= -->
     <script>
         const targetDate = new Date("2026-03-28T10:00:00+07:00").getTime();
 
@@ -130,67 +114,16 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            if (cd_days) cd_days.innerHTML = days;
-            if (cd_hours) cd_hours.innerHTML = hours;
-            if (cd_minutes) cd_minutes.innerHTML = minutes;
-            if (cd_seconds) cd_seconds.innerHTML = seconds;
+            if (window.cd_days) cd_days.innerHTML = days;
+            if (window.cd_hours) cd_hours.innerHTML = hours;
+            if (window.cd_minutes) cd_minutes.innerHTML = minutes;
+            if (window.cd_seconds) cd_seconds.innerHTML = seconds;
         }
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
     </script>
 
-
-    <!-- ================= FLOWER ANIMATION ================= -->
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-
-        @keyframes bungaAngin {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-0.5deg); }
-            50% { transform: rotate(0.5deg); }
-            75% { transform: rotate(-0.3deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .bunga-animasi {
-            animation: bungaAngin 8s ease-in-out infinite;
-            transform-origin: bottom center;
-        }
-
-        @keyframes spinSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .animate-spin-slow {
-            animation: spinSlow 6s linear infinite;
-        }
-
-        /* Desktop 70/30 aktif mulai 1280px */
-        @media (min-width: 1280px) {
-            .right-panel-bg {
-                background-attachment: scroll;
-            }
-        }
-
-        /* Mobile & Tablet */
-        @media (max-width: 1279px) {
-            body {
-                background-image: url('/assets/images/bg/cover-fix.jpeg');
-                background-size: cover;
-                background-position: top center;
-                background-attachment: fixed;
-                background-repeat: no-repeat;
-            }
-
-            .right-panel-bg {
-                background-image: none !important;
-            }
-        }
-    </style>
 
 
     <!-- ================= AUDIO ================= -->
@@ -214,49 +147,6 @@
         </button>
     </div>
 
-    <script>
-        function musicPlayer() {
-            return {
-                playing: false,
-                audio: null,
-
-                init() {
-                    this.audio = document.getElementById('bgm');
-                    this.audio.volume = 0;
-
-                    window.addEventListener('start-music', () => {
-                        this.playWithFade();
-                    });
-                },
-
-                playWithFade() {
-                    if (!this.audio.paused) return;
-
-                    this.audio.play().then(() => {
-                        this.playing = true;
-                        let volume = 0;
-                        const fade = setInterval(() => {
-                            if (volume < 0.25) {
-                                volume += 0.02;
-                                this.audio.volume = volume;
-                            } else {
-                                clearInterval(fade);
-                            }
-                        }, 200);
-                    });
-                },
-
-                toggle() {
-                    if (this.audio.paused) {
-                        this.playWithFade();
-                    } else {
-                        this.audio.pause();
-                        this.playing = false;
-                    }
-                }
-            }
-        }
-    </script>
-
 </body>
+
 </html>
