@@ -61,9 +61,9 @@
             @include('sections.countdown')
             @include('sections.akad')
             @include('sections.resepsi')
-        @if($showGift ?? false)
+            @if($showGift ?? false)
             @include('sections.wedding-gift')
-        @endif
+            @endif
             @include('sections.rsvp')
             @include('sections.footer')
 
@@ -89,7 +89,7 @@
         class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah.png"
-            class="w-full h-auto">
+            class="w-full h-auto bunga-animasi">
     </div>
 
 
@@ -100,7 +100,7 @@
         class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah3.png"
-            class="w-full h-auto">
+            class="w-full h-auto bunga-animasi">
     </div>
 
 
@@ -130,7 +130,60 @@
         setInterval(updateCountdown, 1000);
     </script>
 
+    <!-- ================= FLOWER ANIMATION ================= -->
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
 
+        @keyframes bungaAngin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-0.5deg);
+            }
+
+            50% {
+                transform: rotate(0.5deg);
+            }
+
+            75% {
+                transform: rotate(-0.3deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .bunga-animasi {
+            animation: bungaAngin 8s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-spin-slow {
+            animation: spinSlow 6s linear infinite;
+        }
+
+        /* Desktop only */
+        @media (min-width: 1280px) {
+            .right-panel-bg {
+                background-attachment: scroll;
+            }
+        }
+    </style>
 
     <!-- ================= AUDIO ================= -->
     <audio id="bgm" loop preload="auto">
@@ -153,68 +206,73 @@
         </button>
     </div>
 
-<script>
-function musicPlayer() {
-    return {
-        playing: false,
-        audio: null,
+    <script>
+        function musicPlayer() {
+            return {
+                playing: false,
+                audio: null,
 
-        init() {
-            this.audio = document.getElementById('bgm');
-            if (!this.audio) return;
+                init() {
+                    this.audio = document.getElementById('bgm');
+                    if (!this.audio) return;
 
-            this.audio.volume = 0;
+                    this.audio.volume = 0;
 
-            window.addEventListener('start-music', () => {
-                this.playWithFade();
-            });
-        },
+                    window.addEventListener('start-music', () => {
+                        this.playWithFade();
+                    });
+                },
 
-        playWithFade() {
-            if (!this.audio || !this.audio.paused) return;
+                playWithFade() {
+                    if (!this.audio || !this.audio.paused) return;
 
-            this.audio.play().then(() => {
-                this.playing = true;
-                let volume = 0;
-                const fade = setInterval(() => {
-                    if (volume < 0.25) {
-                        volume += 0.02;
-                        this.audio.volume = volume;
+                    this.audio.play().then(() => {
+                        this.playing = true;
+                        let volume = 0;
+                        const fade = setInterval(() => {
+                            if (volume < 0.25) {
+                                volume += 0.02;
+                                this.audio.volume = volume;
+                            } else {
+                                clearInterval(fade);
+                            }
+                        }, 200);
+                    });
+                },
+
+                toggle() {
+                    if (!this.audio) return;
+
+                    if (this.audio.paused) {
+                        this.playWithFade();
                     } else {
-                        clearInterval(fade);
+                        this.audio.pause();
+                        this.playing = false;
                     }
-                }, 200);
-            });
-        },
-
-        toggle() {
-            if (!this.audio) return;
-
-            if (this.audio.paused) {
-                this.playWithFade();
-            } else {
-                this.audio.pause();
-                this.playing = false;
+                }
             }
         }
-    }
-}
-</script>
+    </script>
 
-<style>
-[x-cloak] {
-    display: none !important;
-}
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
 
-@keyframes spinSlow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
 
-.animate-spin-slow {
-    animation: spinSlow 6s linear infinite;
-}
-</style>
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-spin-slow {
+            animation: spinSlow 6s linear infinite;
+        }
+    </style>
 
 </body>
 

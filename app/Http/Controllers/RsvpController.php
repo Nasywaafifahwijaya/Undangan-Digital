@@ -40,8 +40,9 @@ class RsvpController extends Controller
             'kehadiran' => $request->kehadiran,
         ]);
 
-        return redirect('/#rsvp')
-            ->with('success', 'Terima kasih atas konfirmasinya');
+        return redirect()->back()
+            ->with('success', 'Terima kasih atas konfirmasinya')
+            ->withFragment('rsvp');
     }
 
     public function admin(Request $request)
