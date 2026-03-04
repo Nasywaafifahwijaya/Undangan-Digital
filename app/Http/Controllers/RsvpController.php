@@ -7,17 +7,24 @@ use App\Models\Rsvp;
 
 class RsvpController extends Controller
 {
+    // Tamu TANPA wedding gift
     public function index()
     {
         $rsvps = Rsvp::latest()->paginate(4);
-        return view('undangan', compact('rsvps'));
+        return view('undangan', compact('rsvps'))->with('showGift', false);
+    }
+
+    // Tamu DENGAN wedding gift (VIP)
+    public function indexVip()
+    {
+        $rsvps = Rsvp::latest()->paginate(4);
+        return view('undangan', compact('rsvps'))->with('showGift', true);
     }
 
     public function store(Request $request)
     {
         // Honeypot check
         if ($request->filled('website')) {
-            // Kalau honeypot terisi → anggap bot → diam saja
             return redirect()->back();
         }
 
@@ -41,19 +48,34 @@ class RsvpController extends Controller
     {
         $query = Rsvp::query();
 
-        // Filter
         if ($request->filled('filter') && in_array($request->filter, ['Hadir', 'Tidak Hadir', 'Ragu-ragu'])) {
             $query->where('kehadiran', $request->filter);
         }
 
-        // Default sort terbaru → terlama
         $rsvps = $query->latest()->get();
 
-        // Statistik global (bukan hasil filter)
         $hadir = Rsvp::where('kehadiran', 'Hadir')->count();
         $tidak = Rsvp::where('kehadiran', 'Tidak Hadir')->count();
         $ragu = Rsvp::where('kehadiran', 'Ragu-ragu')->count();
 
         return view('admin.rsvpresult', compact('rsvps', 'hadir', 'tidak', 'ragu'));
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $rsvp = Rsvp::findOrFail($id);
+            $rsvp->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'RSVP berhasil dihapus'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal menghapus RSVP'
+            ], 500);
+        }
     }
 }

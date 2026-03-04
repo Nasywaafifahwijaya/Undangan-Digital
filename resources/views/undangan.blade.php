@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Undangan Pernikahan</title>
+    <title>Undangan Digital Anas & Alya</title>
 
     <meta name="description" content="Undangan Pernikahan Alya & Anas">
     <meta name="theme-color" content="#fdf6ec">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/assets/images/icon/favicon2.png">
+    <link rel="apple-touch-icon" href="/assets/images/icon/favicon2.png">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -16,20 +20,20 @@
 
 <body
     x-data="{ opened: !!(window.location.hash || window.location.search) }"
-    class="relative min-h-screen flex items-center justify-center bg-black font-[Poppins] text-gray-800 overflow-x-hidden">
+    class="relative min-h-screen flex items-center justify-center bg-[#fdf6ec] font-[Poppins] text-gray-800 overflow-hidden">
 
 
     <!-- ================= 9:16 WRAPPER ================= -->
-    <div class="relative w-full max-w-[430px] aspect-[9/16] bg-[#fdf6ec] shadow-2xl overflow-hidden">
+    <div class="relative w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] min-h-screen bg-[#fdf6ec] shadow-2xl overflow-hidden">
 
         <!-- ================= BACKGROUND ================= -->
-        <div class="absolute inset-0 z-0">
+        <div class="fixed inset-0 w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] left-1/2 -translate-x-1/2 z-0">
             <img src="/assets/images/bg/cover-fix.jpeg"
                 class="w-full h-full object-cover object-center">
         </div>
 
         <!-- Overlay -->
-        <div class="absolute inset-0 bg-[#fdf6ec]/20 z-10"></div>
+        <div class="fixed inset-0 w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] left-1/2 -translate-x-1/2 bg-[#fdf6ec]/20 z-10"></div>
 
 
         {{-- COVER --}}
@@ -37,7 +41,7 @@
             x-transition:leave="transition ease-[cubic-bezier(0.22,1,0.36,1)] duration-700"
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-105"
-            class="relative z-20">
+            class="relative min-h-screen z-20 overflow-hidden">
 
             @include('sections.cover')
         </div>
@@ -49,7 +53,7 @@
             x-transition:enter-start="opacity-0 -translate-y-16 scale-95"
             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
             x-cloak
-            class="relative z-20 h-full overflow-y-auto">
+            class="relative z-20 h-screen overflow-y-auto">
 
             @include('sections.detail-card')
             @include('sections.opening')
@@ -57,7 +61,9 @@
             @include('sections.countdown')
             @include('sections.akad')
             @include('sections.resepsi')
+        @if($showGift ?? false)
             @include('sections.wedding-gift')
+        @endif
             @include('sections.rsvp')
             @include('sections.footer')
 
@@ -69,7 +75,7 @@
     <!-- ================= BUNGA ATAS ================= -->
     <div x-show="opened"
         x-transition.opacity
-        class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-40">
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-atas.png"
             class="w-full h-auto">
@@ -80,7 +86,7 @@
     <div
         x-show="!opened"
         x-transition.opacity
-        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-40">
+        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah.png"
             class="w-full h-auto">
@@ -91,7 +97,7 @@
     <div
         x-show="opened"
         x-transition.opacity
-        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-40">
+        class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] md:max-w-[576px] lg:max-w-[640px] pointer-events-none z-40">
 
         <img src="/assets/images/bg/bunga-bawah3.png"
             class="w-full h-auto">
@@ -146,6 +152,69 @@
 
         </button>
     </div>
+
+<script>
+function musicPlayer() {
+    return {
+        playing: false,
+        audio: null,
+
+        init() {
+            this.audio = document.getElementById('bgm');
+            if (!this.audio) return;
+
+            this.audio.volume = 0;
+
+            window.addEventListener('start-music', () => {
+                this.playWithFade();
+            });
+        },
+
+        playWithFade() {
+            if (!this.audio || !this.audio.paused) return;
+
+            this.audio.play().then(() => {
+                this.playing = true;
+                let volume = 0;
+                const fade = setInterval(() => {
+                    if (volume < 0.25) {
+                        volume += 0.02;
+                        this.audio.volume = volume;
+                    } else {
+                        clearInterval(fade);
+                    }
+                }, 200);
+            });
+        },
+
+        toggle() {
+            if (!this.audio) return;
+
+            if (this.audio.paused) {
+                this.playWithFade();
+            } else {
+                this.audio.pause();
+                this.playing = false;
+            }
+        }
+    }
+}
+</script>
+
+<style>
+[x-cloak] {
+    display: none !important;
+}
+
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+    animation: spinSlow 6s linear infinite;
+}
+</style>
 
 </body>
 
