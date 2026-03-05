@@ -1,76 +1,79 @@
 <section id="detail-card"
-    class="min-h-screen flex items-center justify-center px-4 py-16">
+class="min-h-[90vh] md:min-h-screen flex items-center justify-center px-4 py-12">
 
-    <div class="relative
-        w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px]
-        rounded-t-[260px] sm:rounded-t-[280px] md:rounded-t-[300px]
-        rounded-b-[32px]
-        border border-[#c6b89a]
-        px-6 sm:px-8 md:px-12
-        py-14 sm:py-16 md:py-20
-        flex flex-col justify-between
-        text-center"
-        style="background-color: rgba(243, 237, 227, 0.85); aspect-ratio: 3 / 4;">
+<div class="relative
+w-full max-w-[380px] sm:max-w-[400px] md:max-w-[440px] lg:max-w-[460px]
+min-h-[420px]
+rounded-t-[260px] md:rounded-t-[280px]
+rounded-b-[32px]
+border border-[#c6b89a]
+px-7 sm:px-8 md:px-10 lg:px-12
+py-12 sm:py-14 md:py-16
+flex flex-col justify-between
+text-center
+bg-[rgba(243,237,227,0.85)]">
 
-        <!-- INNER BORDER -->
-        <div class="absolute inset-3 sm:inset-4
-            rounded-t-[240px] sm:rounded-t-[260px] md:rounded-t-[280px]
-            rounded-b-[24px]
-            border border-[#c6b89a] pointer-events-none">
-        </div>
 
-        <!-- CONTENT -->
-        <div class="relative z-10 flex flex-col justify-center h-full">
+<!-- INNER BORDER -->
+<div class="absolute inset-4
+rounded-t-[240px] md:rounded-t-[260px]
+rounded-b-[24px]
+border border-[#c6b89a] pointer-events-none"></div>
 
-            <!-- TITLE -->
-            <p class="text-[10px] sm:text-[11px]
-                tracking-[0.35em] sm:tracking-[0.4em]
-                text-[#8b7a55] mb-5 sm:mb-6">
-                THE WEDDING OF
-            </p>
 
-            <!-- NAMA -->
-            <h1 class="font-[Playfair_Display] text-[#8b7a55]
-                text-3xl sm:text-4xl md:text-5xl
-                mb-5 sm:mb-6">
-                Alya & Anas
-            </h1>
+<div class="relative z-10 flex flex-col justify-center h-full">
 
-            <!-- TEKS -->
-            <p class="text-xs sm:text-sm text-[#8b7a55] mb-8 sm:mb-10 px-2 sm:px-0">
-                Yang akan diselenggarakan pada waktu
-            </p>
+<p class="text-[10px] sm:text-[11px] tracking-[0.4em] text-[#8b7a55] mb-4">
+THE WEDDING OF
+</p>
 
-            <!-- SABTU -->
-            <div class="flex items-center justify-center gap-2 mb-3 sm:mb-4">
-                <div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
-                <span class="text-xs sm:text-sm tracking-widest text-[#8b7a55]">
-                    SABTU
-                </span>
-                <div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
-            </div>
+<h1 class="font-[Playfair_Display] text-[#8b7a55]
+text-3xl sm:text-4xl md:text-5xl mb-4">
+Alya & Anas
+</h1>
 
-            <!-- TANGGAL -->
-            <div class="mb-3 sm:mb-4 text-[#8b7a55]">
-                <div class="text-base sm:text-lg">28</div>
-                <div class="text-xl sm:text-2xl font-semibold">MARET</div>
-                <div class="text-base sm:text-lg">2026</div>
-            </div>
+<p class="text-xs sm:text-sm text-[#8b7a55] mb-6">
+Yang akan diselenggarakan pada waktu
+</p>
 
-            <!-- JAM -->
-            <div class="flex items-center justify-center gap-2 mb-8 sm:mb-10">
-                <div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
-                <span class="text-xs sm:text-sm text-[#8b7a55] whitespace-nowrap">
-                    10:00 WIB – 17:00 WIB
-                </span>
-                <div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
-            </div>
+<div class="flex items-center justify-center gap-2 mb-3">
 
-            <!-- GARIS BAWAH -->
-            <div class="w-full h-[1px] bg-[#c6b89a] mt-auto"></div>
+<div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
 
-        </div>
+<span class="text-xs sm:text-sm tracking-widest text-[#8b7a55]">
+SABTU
+</span>
 
-    </div>
+<div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
+
+</div>
+
+
+<div class="mb-3 text-[#8b7a55]">
+
+<div class="text-base sm:text-lg">28</div>
+<div class="text-xl sm:text-2xl font-semibold">MARET</div>
+<div class="text-base sm:text-lg">2026</div>
+
+</div>
+
+
+<div class="flex items-center justify-center gap-2 mb-6">
+
+<div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
+
+<span class="text-xs sm:text-sm text-[#8b7a55] whitespace-nowrap">
+10:00 WIB – 17:00 WIB
+</span>
+
+<div class="w-6 sm:w-8 h-[1px] bg-[#c6b89a]"></div>
+
+</div>
+
+<div class="w-full h-[1px] bg-[#c6b89a] mt-auto"></div>
+
+</div>
+
+</div>
 
 </section>
