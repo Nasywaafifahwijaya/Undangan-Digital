@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@source "../**/*.blade.php";
+@source "../**/*.js";
 
 @theme {
     --font-sans:
@@ -11,7 +9,8 @@
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
 }
-/* ===== Scroll Animation ===== */
+
+/* Scroll Animation */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -23,6 +22,7 @@
     transform: translateY(0);
 }
 
+/* Prevent iOS auto text zoom */
 html {
     -webkit-text-size-adjust: 100%;
 }
