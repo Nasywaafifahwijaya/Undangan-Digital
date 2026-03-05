@@ -18,8 +18,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 
+@php
+$guest = request('to') ?? 'Tamu Undangan';
+@endphp
+
 <body
-    x-data="{ opened: !!(window.location.hash || window.location.search) }"
+    x-data="{ opened: !!window.location.hash }"
     class="relative min-h-screen flex items-center justify-center bg-[#fdf6ec] font-[Poppins] text-gray-800 overflow-hidden">
 
 

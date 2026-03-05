@@ -15,13 +15,15 @@
                transition-all duration-700 ease-in-out"
         :class="open ? 'opacity-0 scale-95' : 'opacity-100 scale-100'">
 
-        <div class="space-y-4 sm:space-y-5 md:space-y-6">
+        <div class="space-y-5 sm:space-y-4 md:space-y-7">
+
+
 
             <!-- TITLE -->
-            <p class="text-[10px] sm:text-xs md:text-sm lg:text-base
-                      tracking-[0.2em] font-light text-[#8B7355]
-                      drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]
-                      [text-shadow:_0_2px_10px_rgb(255_255_255_/_90%)]">
+            <p class="text-[13px] sm:text-xs md:text-sm lg:text-base
+          tracking-[0.2em] font-medium text-[#8B7355]
+          drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]
+          [text-shadow:_0_2px_10px_rgb(255_255_255_/_90%)]">
                 THE WEDDING OF
             </p>
 
@@ -32,6 +34,17 @@
                        [text-shadow:_0_3px_14px_rgb(255_255_255_/_95%)]">
                 Alya & Anas
             </h1>
+
+            <!-- TAMU -->
+            <div class="space-y-1">
+                <p class="text-[10px] sm:text-xs md:text-sm tracking-widest text-[#8B7355]">
+                    Kepada Yth.
+                </p>
+
+                <p class="text-sm sm:text-base md:text-lg font-medium text-[#6B5744]">
+                    {{ $guest }}
+                </p>
+            </div>
 
             <!-- BUTTON -->
             <button
