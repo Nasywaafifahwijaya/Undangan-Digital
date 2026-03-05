@@ -11,19 +11,22 @@
         <!-- CONTENT -->
         <div
             class="relative z-20 w-full flex flex-col items-center justify-center text-center
-        translate-y-8 sm:translate-y-10 md:translate-y-12
+        translate-y-8 sm:translate-y-10 md:translate-y-14 lg:translate-y-20
         transition-all duration-700 ease-in-out"
             :class="open ? 'opacity-0 scale-95' : 'opacity-100 scale-100'">
 
             <div class="space-y-5 sm:space-y-4 md:space-y-7">
 
                 <!-- TITLE -->
-                <p class="text-[13px] sm:text-xs md:text-sm lg:text-base
+                <p class="text-[13px] sm:text-xs md:text-sm lg:text-base tracking-[0.2em] font-medium text-[#8B7355] drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)] [text-shadow:0_2px_10px_rgb(255_255_255/_90%)] mt-6 md:mt-8 lg:mt-10">
+                    THE WEDDING OF
+                </p>
+                <!-- <p class="text-[13px] sm:text-xs md:text-sm lg:text-base
             tracking-[0.2em] font-medium text-[#8B7355]
             drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]
             [text-shadow:0_2px_10px_rgb(255_255_255/_90%)]">
                     THE WEDDING OF
-                </p>
+                </p> -->
 
                 <!-- NAME -->
                 <h1 class="text-[2rem] sm:text-[2.5rem] md:text-4xl lg:text-5xl

@@ -148,7 +148,10 @@ bg-[#fdf6ec] shadow-2xl overflow-hidden">
             x-transition.opacity
             class="absolute top-0 left-0 w-full pointer-events-none z-40">
 
-            <img src="/assets/images/bg/bunga-atas.png" class="w-full h-auto">
+            <!-- Bunga Atas -->
+            <img src="/assets/images/bg/bunga-atas.png"
+                class="w-full h-auto object-cover object-top bunga-animasi"
+                style="max-height: clamp(180px, 30vh, 300px)">
 
         </div>
 
@@ -162,7 +165,9 @@ bg-[#fdf6ec] shadow-2xl overflow-hidden">
             {{-- <!-- gradient mask -->
 <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-transparent to-[#fdf6ec]"></div> --}}
 
-            <img src="/assets/images/bg/bunga-bawah.png" class="w-full h-auto bunga-animasi">
+            <img src="/assets/images/bg/bunga-bawah.png"
+                class="w-full h-auto object-cover object-bottom bunga-animasi"
+                style="max-height: clamp(180px, 30vh, 300px)">
 
         </div>
 
@@ -173,7 +178,9 @@ bg-[#fdf6ec] shadow-2xl overflow-hidden">
             x-transition.opacity
             class="absolute bottom-0 left-0 w-full pointer-events-none z-40">
 
-            <img src="/assets/images/bg/bunga-bawah3.png" class="w-full h-auto bunga-animasi">
+            <img src="/assets/images/bg/bunga-bawah3.png"
+                class="w-full h-auto object-cover object-bottom bunga-animasi"
+                style="max-height: clamp(220px, 35vh, 350px)">
 
         </div>
 
