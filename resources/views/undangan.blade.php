@@ -29,7 +29,7 @@ $guest = request('to') ?? 'Tamu Undangan';
 
 
 <body
-    x-data="{ opened: !!(window.location.hash || window.location.search) }"
+    x-data="{ opened: !!window.location.hash }"
     class="relative h-dvh overflow-hidden flex items-center justify-center bg-[#fdf6ec] font-[Poppins] text-gray-800">
 
 
